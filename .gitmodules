@@ -2,3 +2,7 @@
 	path = neo/neo-cli
 	url = https://github.com/neo-project/neo-cli.git
 	branch = master-2.x
+[submodule "neo/hackathon/neo-python"]
+	path = neo/hackathon/neo-python
+	url = https://github.com/CityOfZion/neo-python.git
+	branch = master
