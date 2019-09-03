@@ -65,7 +65,7 @@ wallet create /app/data/wallet.json
 wallet
 
 # We can now add the script hash for the Workshop Euro token:
-wallet import token 0x468d4742becd5512a729aa1565b44589fc31f873
+wallet import token 0x0547ad0e6bd7bbac7781f95218454c53bc44275d
 ```
 
 In the bottom of the screen you will see the progress of your node synchronization. Make sure the node is fully synced before sending any transactions. The wallet needs to be up to sync as well. Type `wallet` to check the synchornization status. If at any time you feel like something is not quite okay with your wallet or balances, you can use `wallet rebuild` to start syncing from scratch. This should take a couple of minutes. In the `wallet` overview you can also check your address and your address script hash, that should look like this:
