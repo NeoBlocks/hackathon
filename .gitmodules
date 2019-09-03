@@ -1,0 +1,4 @@
+[submodule "neo/neo-cli"]
+	path = neo/neo-cli
+	url = https://github.com/neo-project/neo-cli.git
+	branch = master-2.x

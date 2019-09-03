@@ -1,0 +1,25 @@
+{
+  "ProtocolConfiguration": {
+    "Magic": 8825472,
+    "AddressVersion": 23,
+    "SecondsPerBlock": 1,
+    "LowPriorityThreshold": 0.001,
+    "StandbyValidators": [
+      "0250f9e1d661ad03b97a8580c64a8e32bd350b411472176361d841adfe3be77bbf",
+      "03010d52cdec237e6c07fb07ed0d677eee198d540ff24778c05b1133eacb4d3d7b",
+      "02149e84cbd0d0f8a5ac456f3db9cdcda9c25767eba218f7beefa49ea7416b6f8d",
+      "020da19d8f693b1eb74f86f0f21ab7246928516a923f3bb5bc85e5ceec4da0b099"
+    ],
+    "SeedList": [
+      "neo-hackathon-1:10333",
+      "neo-hackathon-3:10333",
+      "neo-hackathon-4:10333"
+    ],
+    "SystemFee": {
+      "EnrollmentTransaction": 1000,
+      "IssueTransaction": 500,
+      "PublishTransaction": 500,
+      "RegisterTransaction": 10000
+    }
+  }
+}
