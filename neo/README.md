@@ -32,5 +32,37 @@ docker create -it --name=neo-hackathon-4 -v ${location}/4/Chain:/app/Chain -v ${
 for node in neo-hackathon-1 neo-hackathon-2 neo-hackathon-3 neo-hackathon-4; do docker start ${node}; done
 
 # Create an admin neo-cli container that is not a consensus node and expose the RPC and P2P ports
-docker run -it --name=neo-hackathon --network=neo -p 10332-10333:10332-10333 --restart=unless-stopped --log-opt max-size=128m -v ${location}/admin/Chain:/app/Chain -v ${location}/admin/Index:/app/Index -v ${location}/admin/node1.json:/app/node1.json -v ${location}/admin/node2.json:/app/node2.json -v ${location}/admin/node3.json:/app/node3.json -v ${location}/admin/node4.json:/app/node4.json hackathon/neo-cli
+docker run -it --name=neo-hackathon --network=hackathon -p 10332-10333:10332-10333 --restart=unless-stopped --log-opt max-size=128m -v ${location}/admin/Chain:/app/Chain -v ${location}/admin/Index:/app/Index -v ${location}/admin/node1.json:/app/node1.json -v ${location}/admin/node2.json:/app/node2.json -v ${location}/admin/node3.json:/app/node3.json -v ${location}/admin/node4.json:/app/node4.json hackathon/neo-cli
+
+# Now attach to the container and send all NEO to a new wallet
+docker attach neo-hackathon
+
+# Create a new wallet
+create wallet admin.json
+
+# Import the multi-signature contract where the initial NEO is deployed
+import multisigaddress 3 0250f9e1d661ad03b97a8580c64a8e32bd350b411472176361d841adfe3be77bbf 03010d52cdec237e6c07fb07ed0d677eee198d540ff24778c05b1133eacb4d3d7b 02149e84cbd0d0f8a5ac456f3db9cdcda9c25767eba218f7beefa49ea7416b6f8d 020da19d8f693b1eb74f86f0f21ab7246928516a923f3bb5bc85e5ceec4da0b099
+
+# Rebuild to get the proper balance, use list asset to confirm that you have 100M NEO
+rebuild index
+list asset
+
+# Now send all NEO to your new wallet
+send NEO APfh7KMuCJeRkYy7L7wYiQxWKszrJ7Q7Z1 all
+
+# This will create an unsigned transaction. Open each of the node wallets to sign the transaction and eventually broadcast the signed transaction
+open wallet node1.json
+import multisigaddress 3 0250f9e1d661ad03b97a8580c64a8e32bd350b411472176361d841adfe3be77bbf 03010d52cdec237e6c07fb07ed0d677eee198d540ff24778c05b1133eacb4d3d7b 02149e84cbd0d0f8a5ac456f3db9cdcda9c25767eba218f7beefa49ea7416b6f8d 020da19d8f693b1eb74f86f0f21ab7246928516a923f3bb5bc85e5ceec4da0b099
+sign {}
+
+# Repeat this step with 3 out of 4 wallets, then relay the transaction
+relay {}
+
+# Now we can open our first wallet again, show the unspent outputs and this should have the same hash as the transaction that we just relayed
+show utxo
+
+# We can now send all NEO to the same address again and claim our first GAS
+send NEO APfh7KMuCJeRkYy7L7wYiQxWKszrJ7Q7Z1 all
+show utxo
+claim gas all
 ```
