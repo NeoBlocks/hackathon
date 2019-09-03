@@ -11,10 +11,10 @@
       "020da19d8f693b1eb74f86f0f21ab7246928516a923f3bb5bc85e5ceec4da0b099"
     ],
     "SeedList": [
-      "neo-hackathon-1:10333",
-      "neo-hackathon-2:10333",
-      "neo-hackathon-3:10333",
-      "neo-hackathon-4:10333"
+      "neo-hackathon-node-1:31333",
+      "neo-hackathon-node-2:32333",
+      "neo-hackathon-node-3:33333",
+      "neo-hackathon-node-4:34333"
     ],
     "SystemFee": {
       "EnrollmentTransaction": 1000,

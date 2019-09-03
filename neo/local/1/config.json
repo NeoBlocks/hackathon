@@ -5,12 +5,12 @@
       "Index": "Index"
     },
     "P2P": {
-      "Port": 10333,
-      "WsPort": 10334
+      "Port": 31333,
+      "WsPort": 31334
     },
     "RPC": {
       "BindAddress": "0.0.0.0",
-      "Port": 10332,
+      "Port": 31332,
       "SslCert": "",
       "SslCertPassword": ""
     },
